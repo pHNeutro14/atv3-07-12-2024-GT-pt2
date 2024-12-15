@@ -10,18 +10,19 @@ def inicio():
 def calc_imc():
     altura = float(request.args.get("altura"))
     peso = float(request.args.get("peso"))
+    nome = str(request.args.get("nome"))
     imc = round((peso/altura**2),2)
 
     if imc < 18.5:
-        mensagem = f"está abaixo do peso."
+        mensagem = f"{nome} está abaixo do peso."
     
     elif imc < 24.9:
-        mensagem = f"está com o peso normal."
+        mensagem = f"{nome} está com o peso normal."
 
     elif imc < 29.9:
-        mensagem = f"está com sobrepeso."
+        mensagem = f"{nome} está com sobrepeso."
 
     else:
-        mensagem = f"está obeso."
+        mensagem = f"{nome} está obeso."
 
     return render_template('calc_imc.html', mensagem = mensagem)
